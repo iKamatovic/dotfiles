@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisci Display 8
+#font pango:System San Francisci Display 8
+font pango:Roboto 400 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -36,7 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -nb '#232735'
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -93,7 +94,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $w1 "1: WWW " 
+set $w1 "1: WWW " 
 set $w2 "2: Development "
 set $w3 "3: Terminal "
 set $w4 "4: Chat "
@@ -162,20 +163,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # lock screen
-bindsym Control+Shift+l exec "$HOME/.i3/scripts/lock $HOME/Pictures/lock.png"
+bindsym Control+Shift+l exec "$HOME/.i3/scripts/lock.sh"
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+#set $bg-color 	          #2f343f
+#set $inactive-bg-color   #2f343f
+#set $text-color          #f3f4f5
+#set $inactive-text-color #676E7D
+#set $urgent-bg-color     #E53935
+
+set $bg-color 	         #232735
+set $inactive-bg-color   #2d3144
+set $text-color          #d0d0d0
+set $inactive-text-color #4f5464
+set $urgent-bg-color     #c792ea
+set $idicator-color      #ffcb6b
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+client.focused          $bg-color           $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $indicator-color
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -204,10 +212,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Wallpaper
-exec_always feh --bg-scale ~/Pictures/fantasy-earth-1.jpg
+exec_always feh --bg-scale ~/Pictures/bg.jpg
 
 # Autorun apps
-exec chromium
+exec chromium-browser
 exec code
 #exec atom
 #exec terminator
